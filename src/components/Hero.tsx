@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Mic2, Zap, Users, Star, Clock, Shield, Globe, Headphones, Video, GraduationCap, Gamepad2, Building } from 'lucide-react';
+import { ArrowRight, Sparkles, Mic2, Zap, Users, Star, Clock, Shield, Globe, Headphones, Video, GraduationCap, Gamepad2, Building, Play } from 'lucide-react';
 
 interface HeroProps {
   onGetStarted: () => void;
@@ -120,7 +120,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 py-20">
-        {/* Hero Section */}
+        {/* Hero Section - Properly Centered */}
         <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -133,18 +133,22 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
               <span className="text-sm text-white/80">Trusted by 10,000+ creators worldwide</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Clone Any Voice
-              <span className="block bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-                In Seconds
-              </span>
-            </h1>
-            
-            <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed mb-8">
-              Transform text into speech with AI-powered voice cloning. Create custom voices, 
-              generate natural-sounding audio, and bring your content to life with 
-              professional-grade voice synthesis technology.
-            </p>
+            {/* Centered Headline with Perfect Alignment */}
+            <div className="flex flex-col items-center justify-center min-h-[300px] space-y-6">
+              <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] text-center max-w-4xl">
+                Clone Any Voice
+                <span className="block bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent mt-2">
+                  In Seconds
+                </span>
+              </h1>
+              
+              {/* Improved subheading with better line height */}
+              <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed text-center">
+                Transform text into speech with AI-powered voice cloning. Create custom voices, 
+                generate natural-sounding audio, and bring your content to life with 
+                professional-grade voice synthesis technology.
+              </p>
+            </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6 text-white/60 text-sm mb-8">
               <div className="flex items-center space-x-2">
@@ -162,15 +166,16 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
             </div>
           </motion.div>
 
+          {/* Perfectly Aligned Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <motion.button
               onClick={onGetStarted}
-              className="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-primary-500/25 transition-all duration-300 flex items-center space-x-2"
+              className="group bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-primary-500/25 transition-all duration-300 flex items-center space-x-2 min-w-[220px] justify-center focus:outline-none focus:ring-4 focus:ring-primary-500/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -179,16 +184,16 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
             </motion.button>
             
             <motion.button
-              className="group bg-white/5 backdrop-blur-xl hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-semibold text-lg border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center space-x-2"
+              className="group bg-white/5 backdrop-blur-xl hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-semibold text-lg border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center space-x-2 min-w-[180px] justify-center focus:outline-none focus:ring-4 focus:ring-white/10"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              <Play className="w-5 h-5" />
               <span>Watch Demo</span>
-              <Zap className="w-5 h-5" />
             </motion.button>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - Improved Responsive Design */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -213,7 +218,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
           </motion.div>
         </div>
 
-        {/* Features Grid */}
+        {/* Features Grid - Responsive */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -229,7 +234,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -256,7 +261,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
           </div>
         </motion.div>
 
-        {/* Industry Use Cases */}
+        {/* Industry Use Cases - Responsive Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -272,7 +277,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {useCases.map((useCase, index) => (
               <motion.div
                 key={index}
@@ -300,7 +305,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
           </div>
         </motion.div>
 
-        {/* Testimonials */}
+        {/* Testimonials - Responsive */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -316,7 +321,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
@@ -361,10 +366,10 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
             Join thousands of creators who are already using VoiceForge to revolutionize their audio content.
             Start your free trial today and experience the future of voice synthesis.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.button
               onClick={onGetStarted}
-              className="group bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-primary-500/25 transition-all duration-300 flex items-center space-x-2"
+              className="group bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-primary-500/25 transition-all duration-300 flex items-center space-x-2 min-w-[200px] justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
