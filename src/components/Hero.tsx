@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Mic2, Zap, Users, Star, Clock, Shield, Globe, Headphones } from 'lucide-react';
+import { ArrowRight, Sparkles, Mic2, Zap, Users, Star, Clock, Shield, Globe, Headphones, Video, GraduationCap, Gamepad2, Building } from 'lucide-react';
 
 interface HeroProps {
   onGetStarted: () => void;
+  onIndustryClick: (industry: string) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
+const Hero: React.FC<HeroProps> = ({ onGetStarted, onIndustryClick }) => {
   const stats = [
     { label: 'Voices Created', value: '50K+', icon: Mic2 },
     { label: 'Happy Users', value: '10K+', icon: Users },
@@ -55,24 +56,36 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
 
   const useCases = [
     {
+      id: 'content-creation',
       title: 'Content Creation',
       description: 'Podcasts, YouTube videos, audiobooks',
-      gradient: 'from-purple-500 to-pink-500'
+      gradient: 'from-purple-500 to-pink-500',
+      icon: Video,
+      details: 'Perfect for creators who need consistent, high-quality narration'
     },
     {
+      id: 'elearning',
       title: 'E-Learning',
       description: 'Course narration, training materials',
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'from-blue-500 to-cyan-500',
+      icon: GraduationCap,
+      details: 'Scale educational content with multilingual voice support'
     },
     {
+      id: 'gaming',
       title: 'Gaming',
       description: 'Character voices, game narration',
-      gradient: 'from-green-500 to-emerald-500'
+      gradient: 'from-green-500 to-emerald-500',
+      icon: Gamepad2,
+      details: 'Bring characters to life with unique, customizable voices'
     },
     {
+      id: 'business',
       title: 'Business',
       description: 'IVR systems, presentations, ads',
-      gradient: 'from-orange-500 to-red-500'
+      gradient: 'from-orange-500 to-red-500',
+      icon: Building,
+      details: 'Professional voice solutions for enterprise applications'
     }
   ];
 
@@ -243,7 +256,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
           </div>
         </motion.div>
 
-        {/* Use Cases */}
+        {/* Industry Use Cases */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -255,7 +268,7 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
               Perfect for Every Industry
             </h2>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">
-              From content creation to enterprise solutions, VoiceForge adapts to your needs
+              From content creation to enterprise solutions, VoiceForge adapts to your industry needs
             </p>
           </div>
 
@@ -266,12 +279,21 @@ const Hero: React.FC<HeroProps> = ({ onGetStarted }) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
-                className="group relative overflow-hidden bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
+                onClick={() => onIndustryClick(useCase.id)}
+                className="group relative overflow-hidden bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${useCase.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 <div className="relative">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <useCase.icon className="w-6 h-6 text-white" />
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">{useCase.title}</h3>
-                  <p className="text-white/70 text-sm">{useCase.description}</p>
+                  <p className="text-white/70 text-sm mb-3">{useCase.description}</p>
+                  <p className="text-white/50 text-xs">{useCase.details}</p>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-white/60 text-xs">Learn more</span>
+                    <ArrowRight className="w-4 h-4 text-white/60 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </motion.div>
             ))}
